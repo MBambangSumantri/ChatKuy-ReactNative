@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image} from 'react-native';
+import * as firebase from 'firebase';
 
 class AuthLoadingScreen extends React.Component {
   constructor() {
@@ -10,6 +11,9 @@ class AuthLoadingScreen extends React.Component {
   }
   componentDidMount() {
     this._bootstrapAsync();
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.navigation.navigate(user ? 'App' : 'Auth');
+    });
   }
   componentWillUnmount() {
     clearInterval(this.state.interval);

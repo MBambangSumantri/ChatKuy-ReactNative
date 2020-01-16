@@ -13,6 +13,20 @@ import SignUpScreen from './src/pages/auth/SignUp';
 import HomeScreen from './src/pages/home/Home';
 import ProfileScreen from './src/pages/home/Profile';
 
+import * as firebase from 'firebase';
+
+var firebaseConfig = {
+  apiKey: 'AIzaSyCako2LK4vKFgRME9sFxlJ76ib-80lW3Fc',
+  authDomain: 'chatmap-785dc.firebaseapp.com',
+  databaseURL: 'https://chatmap-785dc.firebaseio.com',
+  projectId: 'chatmap-785dc',
+  storageBucket: 'chatmap-785dc.appspot.com',
+  messagingSenderId: '220595875082',
+  appId: '1:220595875082:web:1fdf259b5cbf2bc9e8def3',
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 const HomeStack = createStackNavigator({Home: HomeScreen});
 const ProfileStack = createStackNavigator({Home: ProfileScreen});
 const AuthStack = createStackNavigator({
@@ -32,7 +46,7 @@ const AuthStack = createStackNavigator({
 
 const RootStack = createBottomTabNavigator(
   {
-    Home: HomeStack,
+    Chat: HomeStack,
     Profile: ProfileStack,
   },
   {
@@ -41,8 +55,8 @@ const RootStack = createBottomTabNavigator(
         const {routeName} = navigation.state;
         let IconComponent = Ionicons;
         let iconName;
-        if (routeName === 'Home') {
-          iconName = 'ios-home';
+        if (routeName === 'Chat') {
+          iconName = 'ios-chatboxes';
         } else if (routeName === 'Profile') {
           iconName = 'ios-contact';
         }

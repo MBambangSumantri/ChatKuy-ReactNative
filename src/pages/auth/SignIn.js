@@ -4,8 +4,23 @@ import {View, ScrollView, TouchableHighlight} from 'react-native';
 import {Container, Text, Button} from 'native-base';
 import s from '../../public/styles/login-register';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import * as firebase from 'firebase';
 
 class SignIn extends Component {
+  state = {
+    email: '',
+    password: '',
+    errorMessage: null,
+  };
+
+  handleLogin = () => {
+    const {email, password} = this.state;
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => this.setState({errorMessage: error.message}));
+  };
   render() {
     return (
       <Container style={s.centerRotate}>
@@ -18,16 +33,30 @@ class SignIn extends Component {
                   Hi,<Text style={[s.headerHi, s.secondaryColor]}>Gan!</Text>
                 </Text>
                 <Text style={[s.headerPlease]}>please sign in to continue</Text>
-                <View style={s.section}>
-                  <OutlinedTextField label="Email" />
+                <View style={s.errorMessage}>
+                  {this.state.errorMessage && (
+                    <Text style={s.error}>{this.state.errorMessage}</Text>
+                  )}
                 </View>
                 <View style={s.section}>
-                  <OutlinedTextField label="Password" />
+                  <OutlinedTextField
+                    label="Email"
+                    autoCapitalize="none"
+                    onChangeText={email => this.setState({email})}
+                    value={this.state.email}
+                  />
+                </View>
+                <View style={s.section}>
+                  <OutlinedTextField
+                    secureTextEntry
+                    autoCapitalize="none"
+                    label="Password"
+                    onChangeText={password => this.setState({password})}
+                    value={this.state.password}
+                  />
                 </View>
                 <View style={[s.sectionButton]}>
-                  <Button
-                    style={s.buttonSignIn}
-                    onPress={() => this.props.navigation.navigate('Home')}>
+                  <Button style={s.buttonSignIn} onPress={this.handleLogin}>
                     <Text style={[s.textButtonSignIn]}>
                       Sign In{' '}
                       <Ionicons
