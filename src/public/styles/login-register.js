@@ -107,7 +107,7 @@ const s = StyleSheet.create({
   buttonSignIn: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: color.secondary,
+    backgroundColor: color.primary,
     marginBottom: 150,
     width: 176,
     height: 43,
@@ -116,7 +116,7 @@ const s = StyleSheet.create({
   buttonSignUp: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: color.secondary,
+    backgroundColor: color.primary,
     marginBottom: 80,
     width: 176,
     height: 43,

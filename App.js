@@ -12,6 +12,7 @@ import SignUpScreen from './src/pages/auth/SignUp';
 // import from home
 import HomeScreen from './src/pages/home/Home';
 import ProfileScreen from './src/pages/home/Profile';
+import MapsScreen from './src/pages/home/Maps';
 
 import * as firebase from 'firebase';
 
@@ -28,6 +29,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const HomeStack = createStackNavigator({Home: HomeScreen});
+const MapsStack = createStackNavigator({Maps: MapsScreen});
 const ProfileStack = createStackNavigator({Home: ProfileScreen});
 const AuthStack = createStackNavigator({
   SignIn: {
@@ -47,6 +49,7 @@ const AuthStack = createStackNavigator({
 const RootStack = createBottomTabNavigator(
   {
     Chat: HomeStack,
+    Maps: MapsStack,
     Profile: ProfileStack,
   },
   {
@@ -57,6 +60,8 @@ const RootStack = createBottomTabNavigator(
         let iconName;
         if (routeName === 'Chat') {
           iconName = 'ios-chatboxes';
+        } else if (routeName === 'Maps') {
+          iconName = 'ios-pin';
         } else if (routeName === 'Profile') {
           iconName = 'ios-contact';
         }

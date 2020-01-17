@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import * as firebase from 'firebase';
 
-export default class Home extends Component {
+export default class Chat extends Component {
   state = {
     email: '',
     displayName: '',
