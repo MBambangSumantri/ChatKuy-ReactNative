@@ -30,6 +30,11 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+const highestTimeoutId = setTimeout(() => ';');
+for (let i = 0; i < highestTimeoutId; i++) {
+  clearTimeout(i);
+}
+
 const HomeStack = createStackNavigator({Home: HomeScreen});
 const MapsStack = createStackNavigator({Maps: MapsScreen});
 const ProfileStack = createStackNavigator({
