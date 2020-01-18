@@ -5,13 +5,12 @@ import {
   StyleSheet,
   Image,
   TextInput,
-  Button,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
 import logoPerson from '../../public/images/avatar.jpg';
 import * as firebase from 'firebase';
-// import { User } from './helpers/User';
+import color from '../../config/Config';
 
 export default class Profile extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -29,28 +28,6 @@ export default class Profile extends React.Component {
   signOutUser = () => {
     firebase.auth().signOut();
   };
-  // state ={
-  //     uid : User.uid,
-  //     name: User.name,
-  //     email: User.email
-  // }
-
-  // handleChange = key => val => {
-  //     this.setState({[key]:val})
-  // }
-
-  // changeProfil = async () => {
-  //     if(this.state.name.lenght<3){
-  //         Alert.alert('Error', 'Please enter valid name');
-  //     }else if(User.uid !== this.state.uid ){
-  //         firebase.database().ref('users').child(User.uid).set({
-  //             name : this.state.name,
-  //             email : this.state.email
-  //         });
-  //         User.name= this.state.name;
-  //         Alert.alert('Succes', 'Profil changed successful');
-  //     }
-  // }
 
   render() {
     // console.log(User)
@@ -120,7 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   avatarContainer: {
-    shadowColor: '#151734',
+    shadowColor: color.primary,
     shadowRadius: 30,
     shadowOpacity: 0.4,
   },
@@ -149,12 +126,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     height: 40,
     fontSize: 15,
-    color: '#161F3D',
+    color: color.primary,
   },
   btnUser: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1B4F72',
+    backgroundColor: color.primary,
     marginHorizontal: 50,
     borderRadius: 4,
     height: 32,

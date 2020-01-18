@@ -23,7 +23,7 @@ class AuthLoadingScreen extends React.Component {
   _bootstrapAsync = async () => {
     let timer = setInterval(() => {
       this.props.navigation.navigate('Auth');
-    }, 2000);
+    }, 5000);
 
     this.setState({
       interval: timer,

@@ -1,31 +1,61 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import * as firebase from 'firebase';
+import SafeAreaView from 'react-native-safe-area-view';
 
-export default class Chat extends Component {
+export default class Home extends React.Component {
   state = {
-    email: '',
-    displayName: '',
+    users: [],
   };
 
   componentDidMount() {
-    const {email, displayName} = firebase.auth().currentUser;
-
-    this.setState({email, displayName});
+    let dbRef = firebase.database().ref('messages');
+    let dbRefUsers = firebase.database().ref('users');
+    const User = firebase.auth().currentUser;
+    // console.log('User User',User)
+    // console.log('UserDIsplay',User.displayName)
+    dbRef.on('child_added', val => {
+      let person = val.val();
+      person.uid = val.key;
+      if (person.uid === User.uid) {
+        dbRefUsers.on('child_added', val => {
+          let person = val.val();
+          person.uid = val.key;
+          if (person.uid === User.uid) {
+            User.name = person.name;
+            console.log(User.name);
+          }
+        });
+      } else {
+        this.setState(prevState => {
+          return {
+            users: [...prevState.users, person],
+          };
+        });
+      }
+    });
   }
 
-  signOutUser = () => {
-    firebase.auth().signOut();
+  renderRow = ({item}) => {
+    console.log(item);
+    return (
+      <TouchableOpacity
+        style={{padding: 10, borderBottomColor: '#ccc', borderBottomWidth: 1}}
+        onPress={() => this.props.navigation.navigate('Chat', item)}>
+        <Text style={{fontSize: 20}}>{item.uid}</Text>
+      </TouchableOpacity>
+    );
   };
   render() {
+    console.log(this.state.users);
     return (
-      <View style={styles.container}>
-        <Text>Hi {this.state.email}!</Text>
-
-        <TouchableOpacity style={{marginTop: 32}} onPress={this.signOutUser}>
-          <Text>Logout</Text>
-        </TouchableOpacity>
-      </View>
+      <SafeAreaView>
+        <FlatList
+          data={this.state.users}
+          renderItem={this.renderRow}
+          keyExtractor={item => item.uid}
+        />
+      </SafeAreaView>
     );
   }
 }

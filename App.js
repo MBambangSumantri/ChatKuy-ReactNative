@@ -14,6 +14,8 @@ import HomeScreen from './src/pages/home/Home';
 import ProfileScreen from './src/pages/home/Profile';
 import MapsScreen from './src/pages/home/Maps';
 
+import ChatScreen from './src/pages/chats/ChatScreen';
+
 import * as firebase from 'firebase';
 
 var firebaseConfig = {
@@ -30,7 +32,14 @@ firebase.initializeApp(firebaseConfig);
 
 const HomeStack = createStackNavigator({Home: HomeScreen});
 const MapsStack = createStackNavigator({Maps: MapsScreen});
-const ProfileStack = createStackNavigator({Home: ProfileScreen});
+const ProfileStack = createStackNavigator({
+  Home: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
 const AuthStack = createStackNavigator({
   SignIn: {
     screen: SignInScreen,
@@ -48,7 +57,7 @@ const AuthStack = createStackNavigator({
 
 const RootStack = createBottomTabNavigator(
   {
-    Chat: HomeStack,
+    Home: HomeStack,
     Maps: MapsStack,
     Profile: ProfileStack,
   },
@@ -58,7 +67,7 @@ const RootStack = createBottomTabNavigator(
         const {routeName} = navigation.state;
         let IconComponent = Ionicons;
         let iconName;
-        if (routeName === 'Chat') {
+        if (routeName === 'Home') {
           iconName = 'ios-chatboxes';
         } else if (routeName === 'Maps') {
           iconName = 'ios-pin';
