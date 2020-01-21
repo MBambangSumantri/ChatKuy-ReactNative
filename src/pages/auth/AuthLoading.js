@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image} from 'react-native';
+import * as firebase from 'firebase';
 
 class AuthLoadingScreen extends React.Component {
   constructor() {
@@ -10,6 +11,9 @@ class AuthLoadingScreen extends React.Component {
   }
   componentDidMount() {
     this._bootstrapAsync();
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.navigation.navigate(user ? 'App' : 'Auth');
+    });
   }
   componentWillUnmount() {
     clearInterval(this.state.interval);
@@ -17,13 +21,19 @@ class AuthLoadingScreen extends React.Component {
 
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
+    // var timeouts = [];
+    // timeouts.push( setTimeout( { ... }, 1000) );
     let timer = setInterval(() => {
       this.props.navigation.navigate('Auth');
-    }, 2000);
+    }, 5000);
 
     this.setState({
       interval: timer,
     });
+
+    for (let i = 0; i < timer; i++) {
+      clearTimeout(i);
+    }
   };
 
   // Render any loading content that you like here

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import color from '../../Config';
+import color from '../../config/Config';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -14,6 +14,18 @@ const s = StyleSheet.create({
   centerRotate: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  errorMessage: {
+    height: 72,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 30,
+  },
+  error: {
+    color: '#E9446A',
+    fontSize: 13,
+    fontWeight: '600',
+    textAlign: 'center',
   },
   banner: {
     borderBottomLeftRadius: 36,
@@ -39,7 +51,6 @@ const s = StyleSheet.create({
     backgroundColor: color.primary,
   },
   header: {
-    marginTop: 24,
     marginBottom: 10,
     fontSize: 20,
     fontWeight: 'bold',
@@ -50,7 +61,7 @@ const s = StyleSheet.create({
   },
   headerPlease: {
     fontSize: 15,
-    marginBottom: 50,
+    marginBottom: 10,
   },
   register: {
     flex: 1,
@@ -96,8 +107,8 @@ const s = StyleSheet.create({
   buttonSignIn: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: color.secondary,
-    marginBottom: 180,
+    backgroundColor: color.primary,
+    marginBottom: 150,
     width: 176,
     height: 43,
     borderRadius: 5,
@@ -105,8 +116,8 @@ const s = StyleSheet.create({
   buttonSignUp: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: color.secondary,
-    marginBottom: 110,
+    backgroundColor: color.primary,
+    marginBottom: 80,
     width: 176,
     height: 43,
     borderRadius: 5,

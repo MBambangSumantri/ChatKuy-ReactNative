@@ -12,9 +12,46 @@ import SignUpScreen from './src/pages/auth/SignUp';
 // import from home
 import HomeScreen from './src/pages/home/Home';
 import ProfileScreen from './src/pages/home/Profile';
+import MapsScreen from './src/pages/home/Maps';
 
-const HomeStack = createStackNavigator({Home: HomeScreen});
-const ProfileStack = createStackNavigator({Home: ProfileScreen});
+import ChatScreen from './src/pages/chats/ChatScreen';
+console.disableYellowBox = true;
+
+// import * as firebase from 'firebase';
+const firebase = require('firebase');
+
+var firebaseConfig = {
+  apiKey: 'AIzaSyCako2LK4vKFgRME9sFxlJ76ib-80lW3Fc',
+  authDomain: 'chatmap-785dc.firebaseapp.com',
+  databaseURL: 'https://chatmap-785dc.firebaseio.com',
+  projectId: 'chatmap-785dc',
+  storageBucket: 'chatmap-785dc.appspot.com',
+  messagingSenderId: '220595875082',
+  appId: '1:220595875082:web:1fdf259b5cbf2bc9e8def3',
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const HomeStack = createStackNavigator({
+  FriendList: HomeScreen,
+  Chat: ChatScreen,
+});
+const MapsStack = createStackNavigator({
+  Maps: {
+    screen: MapsScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
+const ProfileStack = createStackNavigator({
+  Home: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
 const AuthStack = createStackNavigator({
   SignIn: {
     screen: SignInScreen,
@@ -32,7 +69,8 @@ const AuthStack = createStackNavigator({
 
 const RootStack = createBottomTabNavigator(
   {
-    Home: HomeStack,
+    Chat: HomeStack,
+    Maps: MapsStack,
     Profile: ProfileStack,
   },
   {
@@ -41,8 +79,10 @@ const RootStack = createBottomTabNavigator(
         const {routeName} = navigation.state;
         let IconComponent = Ionicons;
         let iconName;
-        if (routeName === 'Home') {
-          iconName = 'ios-home';
+        if (routeName === 'Chat') {
+          iconName = 'ios-chatboxes';
+        } else if (routeName === 'Maps') {
+          iconName = 'ios-pin';
         } else if (routeName === 'Profile') {
           iconName = 'ios-contact';
         }
