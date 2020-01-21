@@ -21,6 +21,8 @@ class AuthLoadingScreen extends React.Component {
 
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
+    // var timeouts = [];
+    // timeouts.push( setTimeout( { ... }, 1000) );
     let timer = setInterval(() => {
       this.props.navigation.navigate('Auth');
     }, 5000);
@@ -28,6 +30,10 @@ class AuthLoadingScreen extends React.Component {
     this.setState({
       interval: timer,
     });
+
+    for (let i = 0; i < timer; i++) {
+      clearTimeout(i);
+    }
   };
 
   // Render any loading content that you like here

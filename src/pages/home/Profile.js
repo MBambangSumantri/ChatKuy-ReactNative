@@ -18,11 +18,11 @@ export default class Profile extends React.Component {
       title: 'Profile',
     };
   };
-  state = {email: '', displayName: ''};
+  state = {email: '', name: ''};
 
   componentDidMount() {
-    const {email, displayName} = firebase.auth().currentUser;
-    this.setState({email, displayName});
+    const {email, name} = firebase.auth().currentUser;
+    this.setState({email, name});
   }
 
   signOutUser = () => {
@@ -37,7 +37,7 @@ export default class Profile extends React.Component {
           <View style={styles.avatarContainer}>
             <Image style={styles.avatar} source={logoPerson} />
           </View>
-          <Text style={styles.name}>{this.state.displayName}</Text>
+          <Text style={styles.name}>{this.state.name}</Text>
         </View>
         <View>
           <KeyboardAvoidingView>
@@ -47,7 +47,7 @@ export default class Profile extends React.Component {
                 <TextInput
                   style={styles.input}
                   autoCapitalize="none"
-                  value={this.state.displayName}
+                  value={this.state.name}
                   // onChangeText = {this.handleChange('name')}
                 />
               </View>
@@ -95,6 +95,7 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
   },
   avatarContainer: {
     shadowColor: color.primary,

@@ -133,9 +133,6 @@ export default class Maps extends React.Component {
           style={styles.map}
           showsMyLocationButton={true}
           showsIndoorLevelPicker={true}
-          // showsUserLocation={true}
-          // zoomControlEnabled={true}
-          // showsCompass={true}
           showsTraffic={true}
           region={this.state.mapRegion}
           initialRegion={{

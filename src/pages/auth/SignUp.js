@@ -13,16 +13,9 @@ import s from '../../public/styles/login-register';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as firebase from 'firebase';
 import Geolocation from 'react-native-geolocation-service';
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 
 class SignUp extends Component {
-  // state = {
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   errorMessage: null,
-  // };
-
   // handleSignUp = () => {
   //   firebase
   //     .auth()
@@ -143,8 +136,8 @@ class SignUp extends Component {
           });
 
         ToastAndroid.show('Login success', ToastAndroid.LONG);
-        await AsyncStorage.setItem('userid', response.user.uid);
-        await AsyncStorage.setItem('user', JSON.stringify(response.user));
+        // await AsyncStorage.setItem('userid', response.user.uid);
+        // await AsyncStorage.setItem('user', JSON.stringify(response.user));
       })
       .catch(error => {
         this.setState({
@@ -165,7 +158,7 @@ class SignUp extends Component {
                 <Text style={[s.header]}>Sign Up</Text>
                 <Text style={[s.headerHi]}>
                   Hi,
-                  <Text style={[s.headerHi, s.secondaryColor]}>Welcome!</Text>
+                  <Text style={[s.headerHi, s.secondaryColor]}> Welcome!</Text>
                 </Text>
                 <Text style={[s.headerPlease]}>please sign up to continue</Text>
                 <View style={s.errorMessage}>

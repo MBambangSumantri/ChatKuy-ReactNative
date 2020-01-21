@@ -13,7 +13,7 @@ import s from '../../public/styles/login-register';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as firebase from 'firebase';
 import Geolocation from 'react-native-geolocation-service';
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 
 class SignIn extends Component {
   // state = {
@@ -135,8 +135,8 @@ class SignIn extends Component {
           });
 
         ToastAndroid.show('Login success', ToastAndroid.LONG);
-        await AsyncStorage.setItem('userid', response.user.uid);
-        await AsyncStorage.setItem('user', JSON.stringify(response.user));
+        // await AsyncStorage.setItem('userid', response.user.uid);
+        // await AsyncStorage.setItem('user', JSON.stringify(response.user));
         this.props.navigation.navigate('App');
       })
       .catch(error => {
@@ -157,7 +157,7 @@ class SignIn extends Component {
               <View>
                 <Text style={[s.header]}>Login Here</Text>
                 <Text style={[s.headerHi]}>
-                  Hi,<Text style={[s.headerHi, s.secondaryColor]}>Gan!</Text>
+                  Hi, <Text style={[s.headerHi, s.secondaryColor]}>Gan!</Text>
                 </Text>
                 <Text style={[s.headerPlease]}>please sign in to continue</Text>
                 <View style={s.errorMessage}>

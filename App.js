@@ -15,8 +15,10 @@ import ProfileScreen from './src/pages/home/Profile';
 import MapsScreen from './src/pages/home/Maps';
 
 import ChatScreen from './src/pages/chats/ChatScreen';
+console.disableYellowBox = true;
 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+const firebase = require('firebase');
 
 var firebaseConfig = {
   apiKey: 'AIzaSyCako2LK4vKFgRME9sFxlJ76ib-80lW3Fc',
@@ -30,13 +32,18 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const highestTimeoutId = setTimeout(() => ';');
-for (let i = 0; i < highestTimeoutId; i++) {
-  clearTimeout(i);
-}
-
-const HomeStack = createStackNavigator({Home: HomeScreen});
-const MapsStack = createStackNavigator({Maps: MapsScreen});
+const HomeStack = createStackNavigator({
+  FriendList: HomeScreen,
+  Chat: ChatScreen,
+});
+const MapsStack = createStackNavigator({
+  Maps: {
+    screen: MapsScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
 const ProfileStack = createStackNavigator({
   Home: {
     screen: ProfileScreen,
@@ -62,7 +69,7 @@ const AuthStack = createStackNavigator({
 
 const RootStack = createBottomTabNavigator(
   {
-    Home: HomeStack,
+    Chat: HomeStack,
     Maps: MapsStack,
     Profile: ProfileStack,
   },
@@ -72,7 +79,7 @@ const RootStack = createBottomTabNavigator(
         const {routeName} = navigation.state;
         let IconComponent = Ionicons;
         let iconName;
-        if (routeName === 'Home') {
+        if (routeName === 'Chat') {
           iconName = 'ios-chatboxes';
         } else if (routeName === 'Maps') {
           iconName = 'ios-pin';

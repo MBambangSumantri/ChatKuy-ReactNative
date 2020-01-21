@@ -7,19 +7,12 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
-  KeyboardAvoidingView,
 } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
 import * as firebase from 'firebase';
+import {ScrollView} from 'react-native-gesture-handler';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 export default class ChatScreen extends React.Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      title: navigation.getParam('name'),
-      headerLeft: <TouchableOpacity onPress={() => navigation.goBack(null)} />,
-    };
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -32,12 +25,12 @@ export default class ChatScreen extends React.Component {
     };
   }
 
-  componentWillMount() {
-    const User = firebase.auth().currentUser;
+  componentDidMount() {
+    const Users = firebase.auth().currentUser;
     firebase
       .database()
       .ref('messages')
-      .child(User.uid)
+      .child(Users.uid)
       .child(this.state.person.uid)
       .on('child_added', value => {
         this.setState(prevState => {
@@ -74,24 +67,24 @@ export default class ChatScreen extends React.Component {
 
   sendMessage = async () => {
     if (this.state.textMessage.length > 0) {
-      const User = firebase.auth().currentUser;
+      const Users = firebase.auth().currentUser;
       let msgId = firebase
         .database()
         .ref('messages')
-        .child(User.uid)
+        .child(Users.uid)
         .child(this.state.person.uid)
         .push().key;
       let updates = {};
       let message = {
         message: this.state.textMessage,
         time: firebase.database.ServerValue.TIMESTAMP,
-        from: User.uid,
+        from: Users.uid,
       };
       updates[
-        'messages/' + User.uid + '/' + this.state.person.uid + '/' + msgId
+        'messages/' + Users.uid + '/' + this.state.person.uid + '/' + msgId
       ] = message;
       updates[
-        'messages/' + this.state.person.uid + '/' + User.uid + '/' + msgId
+        'messages/' + this.state.person.uid + '/' + Users.uid + '/' + msgId
       ] = message;
       firebase
         .database()
@@ -102,14 +95,14 @@ export default class ChatScreen extends React.Component {
   };
 
   renderRow = ({item}) => {
-    const User = firebase.auth().currentUser;
+    const Users = firebase.auth().currentUser;
     return (
       <View
         style={{
           flexDirection: 'row',
           width: '60%',
-          alignSelf: item.from === User.uid ? 'flex-end' : 'flex-start',
-          backgroundColor: item.from === User.uid ? '#00897b' : '#7cb342',
+          alignSelf: item.from === Users.uid ? 'flex-end' : 'flex-start',
+          backgroundColor: item.from === Users.uid ? '#344040' : '#BFB9BD',
           borderRadius: 5,
           marginBottom: 10,
         }}>
@@ -126,34 +119,35 @@ export default class ChatScreen extends React.Component {
   render() {
     let {height, width} = Dimensions.get('window');
     return (
-      <SafeAreaView>
-        <FlatList
-          style={{padding: 10, height: height * 0.7}}
-          data={this.state.messageList}
-          renderItem={this.renderRow}
-          keyExtractor={(item, index) => index.toString()}
-        />
-        <KeyboardAvoidingView>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginHorizontal: 5,
-            }}>
+      <>
+        <ScrollView>
+          <FlatList
+            style={{padding: 10, height: height * 0.8}}
+            data={this.state.messageList}
+            renderItem={this.renderRow}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </ScrollView>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 10,
+          }}>
+          <View style={styles.input}>
             <TextInput
-              style={styles.input}
               value={this.state.textMessage}
               placeholder="Type message...."
               onChangeText={this.handleChange('textMessage')}
             />
-            <TouchableOpacity
-              onPress={this.sendMessage}
-              style={{paddingBottom: 10, marginLeft: 5}}>
-              <Text style={styles.btnText}>Send</Text>
+          </View>
+          <View>
+            <TouchableOpacity onPress={this.sendMessage}>
+              <Icons name="send" size={40} />
             </TouchableOpacity>
           </View>
-        </KeyboardAvoidingView>
-      </SafeAreaView>
+        </View>
+      </>
     );
   }
 }
@@ -166,15 +160,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   input: {
-    padding: 10,
+    padding: 2,
     borderWidth: 1,
     borderColor: '#ccc',
-    width: '80%',
-    marginBottom: 10,
+    width: '85%',
+    marginLeft: 10,
     borderRadius: 5,
-  },
-  btnText: {
-    color: 'darkblue',
-    fontSize: 20,
   },
 });
