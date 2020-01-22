@@ -1,5 +1,8 @@
 <h1 align="center">ChatKuy - Chat Realtime</h1>
 <p align="center">
+  <img width="300" src="https://user-images.githubusercontent.com/57070723/72876657-991d2900-3d29-11ea-963c-1e0b6e7f7655.png" />
+</p>
+<p align="center">
   <img width="300" src="https://user-images.githubusercontent.com/57070723/72793555-32d2d080-3c6d-11ea-9bef-4b0a3bf23fda.jpg"/>
 </p>
 <p align="center">
@@ -18,6 +21,7 @@
 - [Features](#features)
 - [Usage](#usage-for-development)
 - [Screenshots](#screenshots)
+- [Release APK](#release-apk)
 - [Contact](#contact)
 - [Contributors](#contributors)
 
@@ -55,6 +59,12 @@ ChatKuy is a mobile application that features realtime chat and tracking via map
   <img width="200" height="390" src="https://user-images.githubusercontent.com/57070723/72793809-80e7d400-3c6d-11ea-936c-9e758ff2f1b3.jpeg">
   <img width="200" height="390" src="https://user-images.githubusercontent.com/57070723/72793810-80e7d400-3c6d-11ea-9ec5-76541eecbebc.jpeg">
 </p>
+
+## Release APK
+
+<a href="https://drive.google.com/open?id=1IYbtGB8pZxf-mwgN-KDVMMnAd7xnmdWN">
+  <img src="https://img.shields.io/badge/Download%20on%20the-Google%20Drive-blue.svg?style=popout&logo=google-drive"/>
+</a>
 
 ## Contact
 
