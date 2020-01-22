@@ -6,6 +6,13 @@
   Built with React Native & Firebase
 </p>
 
+<p align="center">
+<img src="https://img.shields.io/badge/react_native-0.61.3-darkblue">
+<img src="https://img.shields.io/badge/firebase-7.3.0-orange">
+<img src="https://img.shields.io/badge/react_navigation-4.0.10-yellow">
+<img src="https://img.shields.io/badge/react_native_maps-7.1.1-green">
+</p>
+
 ## Table of Contents
 
 - [Features](#features)
@@ -13,13 +20,6 @@
 - [Screenshots](#screenshots)
 - [Contact](#contact)
 - [Contributors](#contributors)
-
-<p align="center">
-<img src="https://img.shields.io/badge/react_native-0.61.3-darkblue">
-<img src="https://img.shields.io/badge/firebase-7.3.0-orange">
-<img src="https://img.shields.io/badge/react_navigation-4.0.10-yellow">
-<img src="https://img.shields.io/badge/react_native_maps-7.1.1-green">
-</p>
 
 ChatKuy is a mobile application that features realtime chat and tracking via maps built using React Native and Google Firebase. Users can also find out the location of other users online and offline
 
@@ -68,7 +68,7 @@ Copyright © 2020 by M. Bambang Sumantri
   <table>
     <tr>
       <td align="center">
-        <a href="https://github.com/ihsan2">
+        <a href="https://github.com/MBambangSumantri">
           <img width="100" src="https://avatars3.githubusercontent.com/u/57070723?s=460&v=4" alt="M. Bambang Sumantri"><br/>
           <sub><b>M. Bambang Sumantri</b></sub>
         </a>
