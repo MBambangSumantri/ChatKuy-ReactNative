@@ -1,6 +1,14 @@
+<h1 align="center">ChatKuy - Chat Realtime</h1>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/57070723/72793555-32d2d080-3c6d-11ea-9bef-4b0a3bf23fda.jpg">
+  <img width="250" src="https://user-images.githubusercontent.com/57070723/72793555-32d2d080-3c6d-11ea-9bef-4b0a3bf23fda.jpg"/>
 </p>
+<p align="center">
+  <img width="250" src="https://user-images.githubusercontent.com/57070723/72866711-e6d86800-3d0e-11ea-8c03-822559ebdf0a.png"/>
+</p>
+<p align="center">
+  Built with React Native & Firebase
+</p>
+
 
 <p align="center">
 <img src="https://img.shields.io/badge/react_native-0.61.3-darkblue">
