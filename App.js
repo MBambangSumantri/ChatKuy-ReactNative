@@ -3,6 +3,15 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {
+  API_KEY,
+  AUTH_DOMAIN,
+  DATABASE_URL,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  MESSAGING_SENDER_ID,
+  APP_ID,
+} from 'react-native-dotenv';
 
 // import from auth
 import AuthLoading from './src/pages/auth/AuthLoading';
@@ -21,13 +30,13 @@ console.disableYellowBox = true;
 const firebase = require('firebase');
 
 var firebaseConfig = {
-  apiKey: 'AIzaSyCako2LK4vKFgRME9sFxlJ76ib-80lW3Fc',
-  authDomain: 'chatmap-785dc.firebaseapp.com',
-  databaseURL: 'https://chatmap-785dc.firebaseio.com',
-  projectId: 'chatmap-785dc',
-  storageBucket: 'chatmap-785dc.appspot.com',
-  messagingSenderId: '220595875082',
-  appId: '1:220595875082:web:1fdf259b5cbf2bc9e8def3',
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DATABASE_URL,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
