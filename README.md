@@ -3,52 +3,51 @@
   <img width="200" src="https://user-images.githubusercontent.com/57070723/72876657-991d2900-3d29-11ea-963c-1e0b6e7f7655.png" />
   <img width="200" src="https://user-images.githubusercontent.com/57070723/72793555-32d2d080-3c6d-11ea-9bef-4b0a3bf23fda.jpg"/>
   <img width="200" src="https://camo.githubusercontent.com/6a85d842758107354b4f886a0e9c64e925aee0e9/68747470733a2f2f616e67756c61722e6769746875622e696f2f72656163742d6e61746976652d72656e64657265722f6173736574732f72656163742e706e67" />
-
-</p>
-<p align="center">
-  Built with React Native & Firebase
 </p>
 
-<p align="center">
-<img src="https://img.shields.io/badge/react_native-0.61.3-darkblue">
-<img src="https://img.shields.io/badge/firebase-7.3.0-orange">
-<img src="https://img.shields.io/badge/react_navigation-4.0.10-yellow">
-<img src="https://img.shields.io/badge/react_native_maps-7.1.1-green">
-</p>
+## Introduction
 
-## Table of Contents
+ChatKuy is Android App for send message with other people and you can track their location easily. Built using React Native Framework and Firebase database.
 
-- [Features](#features)
-- [Usage](#usage-for-development)
-- [Screenshots](#screenshots)
-- [Release APK](#release-apk)
-- [Contact](#contact)
-- [Contributors](#contributors)
+React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android. [More about React Native](https://facebook.github.io/react-native/)
 
-ChatKuy is a mobile application that features realtime chat and tracking via maps built using React Native and Google Firebase. Users can also find out the location of other users online and offline
+Firebase is a mobile and web application development platform developed by Firebase, Inc. in 2011, then acquired by Google in 2014. [More about Firebase](https://console.firebase.google.com/u/0/?hl=id)
 
-## Features
-<b> Authentication </b>
- - Login and Register
- - Edit Profile User
+## Built With
+[![React Native](https://img.shields.io/badge/ReactNative-0.60-blue)](https://facebook.github.io/react-native/)
+[![Firebase](https://img.shields.io/badge/Firebase-orange)](https://firebase.google.com/?hl=id)
 
-<b>Real Time Chat</b>
- - Check user online
- - Chatting with person in friend list
+## Requirements
+- [`npm`](https://www.npmjs.com/get-npm)
+- [`react-native`](https://facebook.github.io/react-native/docs/getting-started)
+- [`Firebase`](https://firebase.google.com/) (database)
+- Smartphone Android
 
-<b>Tracking Location</b>
- - View location online and offline friend in maps
+## How to run the app ?
+To run Chattingan App, follow these steps:
+```
+- open your terminal
+- git clone https://github.com/MBambangSumantri/ChatKuy-ReactNative.git
+- cd ChatApp
+- npm install
+- cp .env.example .env
+- open .env file and fill the requirement
+- make sure you have firebase account and API google Maps
+- npm run android
+- npm start
+- Make sure your developer mode in your device is connected
+```
 
-## Usage for development
+## Contributing to ChatKuy
+To contribute to ChatKuy, follow these steps:
 
- 1. Git clone [ChatKuy](https://github.com/MBambangSumantri/ChatKuy-ReactNative) or download ZIP
- 2. Edit google maps token and firebase authentication 
- 3. Read [Google Maps Token](https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14) and [Firebase Documentation](https://firebase.google.com/docs) to implementation your key in this project
- 4. Open project in code editor (ex. vscode)
- 5. Write in terminal ``npm install`` and ``react-native run-android``
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the pull request.
 
-<!-- ## Download APK
-<img width="15" height="15" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/google-drive-512.png"> You can Download the APK [ChatSek App]() -->
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## Screenshots
 <p align="center">
